@@ -33,7 +33,7 @@ Add the `-h` flag on any command to see how you can use it. For example, `bower 
 
 To run product you need _blogging_  database:
 
-    `./sh createDb.sh`
+    ./sh createDb.sh
     
 if you had **mysql** _root_ password you have to create database manually.
 

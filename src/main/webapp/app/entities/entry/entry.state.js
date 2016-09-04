@@ -111,7 +111,7 @@
         })
         .state('entry.edit', {
             parent: 'entry',
-            url: '/{id}/edit',
+            url: '/{id}/edit/{blogId}',
             data: {
                 authorities: ['ROLE_USER']
             },
@@ -128,9 +128,9 @@
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('entry', null, { reload: 'entry' });
+                    $state.go('blog-detail', {id:$stateParams.blogId}, { reload: 'entry' });
                 }, function() {
-                    $state.go('^');
+                    $state.go('blog-detail', {id:$stateParams.blogId});
                 });
             }]
         })

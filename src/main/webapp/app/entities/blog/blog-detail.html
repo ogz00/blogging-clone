@@ -50,7 +50,7 @@
                     </div>
                     <div class="panel panel-footer">
                         <button ng-show="entry.createdUser.email == vm.account.email" type="button"
-                                ui-sref="entry.edit({id:entry.id})" class="btn btn-primary">
+                                ui-sref="entry.edit({id:entry.id, blogId: vm.blog.id})" class="btn btn-primary">
                             <span class="glyphicon glyphicon-pencil"></span>
                             <span class="hidden-xs hidden-sm"> Edit</span>
                         </button>

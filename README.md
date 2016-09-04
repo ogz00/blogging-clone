@@ -31,6 +31,12 @@ Add the `-h` flag on any command to see how you can use it. For example, `bower 
 
 ## Building for production
 
+To run product you need _blogging_  database:
+
+    ./sh createDb.sh
+    
+if you had **mysql** _root_ password you have to create database manually.
+
 To optimize the blogging client for production, run:
 
     ./mvnw -Pprod clean package
@@ -58,7 +64,7 @@ To setup this project in Jenkins, use the following configuration:
 
 * Project name: `blogging`
 * Source Code Management
-    * Git Repository: `git@github.com:xxxx/blogging.git`
+    * Git Repository: `https://github.com/ogz00/blogging-clone.git`
     * Branches to build: `*/master`
     * Additional Behaviours: `Wipe out repository & force clone`
 * Build Triggers

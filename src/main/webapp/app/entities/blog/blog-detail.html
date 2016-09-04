@@ -1,0 +1,74 @@
+<div>
+    <div class="row">
+        <div class="no-padding-left" style="margin-top: 10px">
+            <button class="btn btn-primary" ui-sref="entry.new({blogId: vm.blog.id})">
+                <span class="glyphicon glyphicon-plus"></span>
+                    <span>
+                        Create new Entry
+                    </span>
+            </button>
+        </div>
+    </div>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.blog.name}}</span>
+        </dd>
+
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{vm.blog.description}}</span>
+        </dd>
+        <dt><span>Type</span></dt>
+        <dd>
+            <span>{{vm.blog.type}}</span>
+        </dd>
+        <dt><span>Users</span></dt>
+        <dd>
+            <span ng-repeat="users in vm.blog.users">
+                {{users.login}}{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span>Created User</span></dt>
+        <dd>
+            {{vm.blog.createdUser.login}}
+        </dd>
+        <dt><span>Entries</span></dt>
+        <dd>
+            <span ng-repeat="entry in vm.blog.entries">
+                <div class="panel panel-default">
+                    <h2 class="panel panel-title">{{entry.title}}</h2>
+                    <div class="panel panel-body">
+                        <div class="well">
+                            {{entry.content}}
+                        </div>
+                        <div class="text-area">
+                            <span style="font-size: x-small; float: right"> author: {{entry.createdUser.login}}</span>
+                        </div>
+                    </div>
+                    <div class="panel panel-footer">
+                        <button ng-show="entry.createdUser.email == vm.account.email" type="button"
+                                ui-sref="entry.edit.edit({id:entry.id})" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span class="hidden-xs hidden-sm"> Edit</span>
+                        </button>
+                    </div>
+                </div>
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button ng-show="vm.blog.createdUser.email == vm.account.email" type="button"
+            ui-sref="blog-detail.edit({id:vm.blog.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>
